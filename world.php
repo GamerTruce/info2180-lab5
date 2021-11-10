@@ -25,8 +25,28 @@ else
 }
 
 ?>
-<ul>
-<?php foreach ($results as $row): ?>
-  <li><?= $row['name'] . ' is ruled by ' . $row['head_of_state']; ?></li>
-<?php endforeach; ?>
-</ul>
+ <table>
+    <?php if($context=="cities"): ?>
+            <th> Country Name</th>
+            <th> District</th>
+            <th> Population</th>
+            <?php foreach ($results as $row): ?>
+            <tr>
+                <td><?= $row['name']; ?></td>
+                <td><?= $row['district']; ?></td>
+                <td><?=$row['population']; ?></td>
+            </tr>
+        <?php endforeach; ?>
+    <?php else: ?>
+            <th> Country Name</th>
+            <th> Continent</th>
+            <th> Independence Year</th>
+            <th> Head of State</th>
+        <?php foreach ($outcome as $row): ?>
+            <tr>
+                <td><?= $row['name']; ?></td> <td><?= $row['continent']; ?></td>  <td><?=$row['independence_year']; ?></td> <td><?= $row['head_of_state']; ?> </td>
+            </tr>
+        <?php endforeach; ?>
+    <?php endif; ?>
+   
+ </table>
